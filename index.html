@@ -96,6 +96,7 @@
       let secondNum = document.querySelector('#second-num').value;
       let operator = document.querySelector('#operator').value;
       output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
+      
     });
 
     let errorBtns = Array.from(document.querySelectorAll('#error-btns > button'));
@@ -120,8 +121,6 @@
       finally{
         console.log('Program terminated')
       }
-      
-      
     })
     //Console Warn
     errorBtns[3].addEventListener('click', () => {
