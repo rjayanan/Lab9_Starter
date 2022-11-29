@@ -69,20 +69,20 @@
     </form>
 
     <section id="error-btns">
-      <button>Console Log</button>
-      <button>Console Error</button>
-      <button>Console Count</button>
-      <button>Console Warn</button>
-      <button>Console Assert</button>
-      <button>Console Clear</button>
-      <button>Console Dir</button>
-      <button>Console dirxml</button>
-      <button>Console Group Start</button>
-      <button>Console Group End</button>
-      <button>Console Table</button>
+      <button id="log">Console Log</button>
+      <button id="error">Console Error</button>
+      <button id="count">Console Count</button>
+      <button id="warn">Console Warn</button>
+      <button id="assert">Console Assert</button>
+      <button id="clear">Console Clear</button>
+      <button id="dir">Console Dir</button>
+      <button id="dirxml">Console dirxml</button>
+      <button id="groups">Console Group Start</button>
+      <button id="groupe">Console Group End</button>
+      <button id="table">Console Table</button>
       <button>Start Timer</button>
       <button>End Timer</button>
-      <button>Console Trace</button>
+      <button id = 'trace'>Console Trace</button>
       <button>Trigger a Global Error</button>
     </section>
   </main>
@@ -100,8 +100,96 @@
 
     let errorBtns = Array.from(document.querySelectorAll('#error-btns > button'));
 
-    // Start your code here
-    // You may move this JS to another file if you wish
+        //Console Log
+    errorBtns[0].addEventListener('click', () => {
+      console.log("Console Log Demo");
+    })
+    //Console Error
+    errorBtns[1].addEventListener('click', () => {
+      console.error("Console Error Demo");
+    })
+    //Console Count
+    errorBtns[2].addEventListener('click', () => {
+      try {
+        console.count();
+
+      }
+      catch(err){
+        throw new InputError("Invalid input")
+      }
+      finally{
+        console.log('Program terminated')
+      }
+      
+      
+    })
+    //Console Warn
+    errorBtns[3].addEventListener('click', () => {
+      console.warn("Console Warning Demo");
+    })
+    //Console Assert
+    errorBtns[4].addEventListener('click', () => {
+      const number = 5;
+      const errorMsg = 'The number does not equal 3';
+      console.assert(number == 3, { number, errorMsg })
+    })
+    //Console Clear
+    errorBtns[5].addEventListener('click', () => {
+      console.clear();
+    })
+    //Console Dir
+    errorBtns[6].addEventListener('click', () => {
+      console.dir(errorBtns[2]);
+    })
+    //Console dirxml
+    errorBtns[7].addEventListener('click', () => {
+      console.dirxml(errorBtns[7]);
+    })
+    //Console Group Start
+    errorBtns[8].addEventListener('click', () => {
+      console.group();
+    })
+    //Console Group End
+    errorBtns[9].addEventListener('click', () => {
+      console.groupEnd();
+    })
+    //Console Table
+    errorBtns[10].addEventListener('click', () => {
+      const users = [
+        {
+          name: 'Rishigesh',
+          age: 21,
+        },
+        {
+          name: 'Bob',
+          age: 22,
+        }
+      ]
+      console.table(users);
+    })
+    //Start Timer
+    errorBtns[11].addEventListener('click', () => {
+      console.time();
+    })
+    //End Timer
+    errorBtns[12].addEventListener('click', () => {
+      console.timeEnd();
+    })
+    //Console Trace
+    errorBtns[13].addEventListener('click', () => {
+      const deep = () => { deeper() }
+      const deeper = () => { deepest() }
+      const deepest = () => { console.trace() }
+      deep();
+    })
+    //Trigger a Global Error
+    errorBtns[14].addEventListener('click', () => {
+      console.log(undefinedValue);
+    });
+    window.onerror = () => {
+      console.log("Printing error that was encountered");
+    }
+    
   </script>
 </body>
 
